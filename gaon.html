@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>왜곡된 낙원, 가온 · 디스피아와 새벽의 파도</title>
+<meta name="description" content="완벽한 질서를 내세운 조직 디스피아와 새벽을 기다리는 저항군. 가온시의 세계관과 인물을 소개합니다.">
+<meta name="theme-color" content="#090c14">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#090c14;--card:#121927;--ink:#eef2f7;--dim:#9aa6b8;--line:rgba(160,180,210,.22);--red:#ff4d57;--dawn:#ffb36b;--wave:#4fd1c5;--ac:var(--dawn);--head:"Black Han Sans","Noto Sans KR",sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:60px}
+body{background:var(--bg);color:var(--ink);font:16.5px/1.8 "IBM Plex Sans KR",system-ui,sans-serif;word-break:keep-all;overflow-x:hidden}
+h1,h2,h3{font-family:var(--head);font-weight:400;line-height:1.25;letter-spacing:.01em}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--dawn);outline-offset:3px}
+nav{position:sticky;top:0;z-index:30;display:flex;gap:1.6rem;justify-content:center;padding:.8rem 1rem;background:rgba(9,12,20,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}
+nav a{color:var(--dim);font-size:.95rem}nav a:hover{color:var(--dawn)}
+section{padding:5.5rem 1.25rem;max-width:1080px;margin:auto}
+.k{color:var(--dawn);font-size:.78rem;letter-spacing:.22em;margin-bottom:.4rem}
+h2{font-size:clamp(1.9rem,5vw,2.8rem);margin-bottom:.8rem}
+.lead{color:var(--dim);max-width:42em;margin-bottom:2rem}
+
+/* hero */
+#hero{position:relative;min-height:94svh;display:flex;padding:7rem 1.25rem 13rem;overflow:hidden;background:linear-gradient(180deg,#07090f 0,#141a33 42%,#4a3358 68%,#d9715f 88%,#ffb36b 100%)}
+#hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 4px)}
+.hero-in{position:relative;z-index:3;max-width:1080px;margin:auto;width:100%}
+.hero-in>*{max-width:560px}
+.hero-in h1{font-size:clamp(2.9rem,10vw,6.2rem);margin:.3rem 0 1rem}
+.hero-in h1 em{font-style:normal;color:var(--dawn);text-shadow:0 0 40px rgba(255,179,107,.55)}
+.hero-in p.s{color:#c8d1df;font-size:1.05rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 2rem}
+.chips span{border:1px solid rgba(255,255,255,.28);padding:.1rem .85rem;font-size:.85rem;color:#dfe6f0}
+.btn{display:inline-block;padding:.7rem 1.7rem;border:1px solid var(--dawn);color:var(--dawn);margin:0 .6rem .6rem 0;transition:.25s}
+.btn.f{background:var(--dawn);color:#10131d;font-weight:600}.btn:hover{transform:translateY(-2px)}
+.sk{position:absolute;left:0;right:0;bottom:0;height:34%;background:#06070c;clip-path:polygon(0 100%,0 58%,5% 58%,5% 36%,10% 36%,10% 52%,16% 52%,16% 22%,21% 22%,21% 55%,27% 55%,27% 40%,33% 40%,33% 62%,40% 62%,40% 30%,46% 30%,46% 58%,53% 58%,53% 44%,60% 44%,60% 64%,66% 64%,66% 28%,72% 28%,72% 56%,79% 56%,79% 38%,85% 38%,85% 60%,92% 60%,92% 34%,100% 34%,100% 100%)}
+.tower{position:absolute;right:11%;bottom:0;width:70px;height:68%;z-index:2}
+.shaft{position:absolute;inset:56px 0 0;background:linear-gradient(#10131d,#05060a);clip-path:polygon(38% 0,62% 0,100% 100%,0 100%)}
+.eye{position:absolute;left:50%;top:0;width:58px;height:58px;margin-left:-29px;border-radius:50%;background:radial-gradient(#ffd3d6 0,#ff4d57 38%,#6a0f18 100%);box-shadow:0 0 40px 10px rgba(255,77,87,.55);display:grid;place-items:center}
+.eye b{width:20px;height:20px;border-radius:50%;background:#12040a;transition:transform .15s}
+.waves{position:absolute;left:0;bottom:-1px;width:200%;height:90px;z-index:4;animation:flow 18s linear infinite}
+.waves path{fill:rgba(79,209,197,.35)}.waves path+path{fill:rgba(79,209,197,.6)}
+@keyframes flow{to{transform:translateX(-50%)}}
+
+/* 공통 컴포넌트 */
+.seg{display:inline-flex;flex-wrap:wrap;gap:3px;border:1px solid var(--line);padding:3px;border-radius:99px;margin-bottom:1.6rem}
+.seg button{font:inherit;font-size:.93rem;border:0;background:none;color:var(--dim);padding:.4rem 1.2rem;border-radius:99px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--ac);color:#10131d;font-weight:600}
+.ph{aspect-ratio:4/3;display:grid;place-items:center;color:rgba(255,255,255,.5);font-size:.85rem;background:linear-gradient(135deg,var(--c,#334),#080a10);position:relative;overflow:hidden}
+.ph::before{content:"";position:absolute;inset:10px;border:1px dashed rgba(255,255,255,.22)}
+.ph.tall{aspect-ratio:3/4}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.ph:has(img){color:transparent}.ph:has(img)::before{display:none}
+h4{margin:1.3rem 0 .3rem;font-size:.82rem;letter-spacing:.14em}
+.r{color:var(--red)}.t{color:var(--wave)}
+
+/* 세계 */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2.5rem}
+.box{background:var(--card);border:1px solid var(--line);padding:1.4rem 1.5rem}
+.box h3{font-size:1.3rem;margin-bottom:.4rem;color:var(--dawn)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.step{border-top:3px solid var(--c);padding-top:.8rem}
+.step small{color:var(--c);letter-spacing:.15em}.step p{font-size:.93rem;color:#c8d1df;margin-top:.3rem}
+
+/* 지구 */
+.dist{display:grid;grid-template-columns:230px 1fr;gap:1.6rem}
+.dl{display:grid;gap:6px;align-content:start}
+.dl button{font:inherit;text-align:left;padding:.8rem 1rem;color:var(--ink);background:var(--card);border:1px solid var(--line);cursor:pointer;transition:.2s}
+.dl button[aria-pressed=true]{border-color:var(--dawn);background:#1a2335;transform:translateX(6px)}
+.pn{background:var(--card);border:1px solid var(--line)}
+.pn .ph{aspect-ratio:16/8}
+.pb{padding:1.4rem 1.5rem 1.7rem}.pb small{color:var(--dim)}
+.pb h3{font-size:1.7rem;margin-bottom:.5rem}.pb p{margin-bottom:.5rem}.pb b{color:#fff}
+
+/* 세력 */
+.fp{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--ac);padding:1.6rem 1.7rem}
+.fp small{color:var(--ac);letter-spacing:.18em}.fp h3{font-size:2rem;margin-bottom:.6rem}
+.fp h4{color:var(--ac)}.fp ul{list-style:none}.fp li{padding:.45rem 0;border-bottom:1px solid var(--line)}.fp li b{color:#fff;margin-right:.5rem}
+.ld{margin-top:.8rem}.ld b{color:var(--ac)}
+
+/* 인물 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1.6rem 1.2rem}
+.card{background:none;border:0;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.card .ph,.dg .ph{clip-path:polygon(0 0,calc(100% - 26px) 0,100% 26px,100% 100%,0 100%);transition:transform .3s}
+.card:hover .ph{transform:translateY(-5px)}
+.card h3{font-size:1.35rem;margin-top:.8rem}.card span{color:var(--dim);font-size:.88rem}
+dialog{margin:auto;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:0;width:min(780px,94vw);max-height:90svh;border-radius:10px}
+dialog::backdrop{background:rgba(3,5,10,.82);backdrop-filter:blur(4px)}
+.dg{display:grid;grid-template-columns:240px 1fr;gap:1.6rem;padding:1.6rem}
+.dg h3{font-size:1.9rem}.rl{color:var(--dawn);font-size:.9rem;margin-bottom:.8rem}
+.fa{display:grid;grid-template-columns:5.2rem 1fr;gap:.35rem .9rem;margin:.6rem 0 1rem;font-size:.92rem}
+.fa dt{color:var(--dim)}
+.hi{border-left:3px solid var(--ac);padding-left:.8rem;margin-top:.8rem}
+.x{position:absolute;top:8px;right:14px;background:none;border:0;color:var(--dim);font-size:1.8rem;cursor:pointer;line-height:1}
+footer{text-align:center;padding:3rem 1rem;color:var(--dim);border-top:1px solid var(--line);font-size:.9rem}
+
+@media(max-width:760px){
+  section{padding:3.8rem 1.1rem}
+  .two,.steps,.dist,.dg{grid-template-columns:1fr}
+  .dl{grid-auto-flow:column;grid-auto-columns:max-content;overflow-x:auto}.dl button[aria-pressed=true]{transform:none}
+  .tower{right:5%;height:52%;opacity:.55}.dg .ph{max-width:240px}.ph.tall{aspect-ratio:4/5}
+  #hero{padding-bottom:11rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav aria-label="목차"><a href="#world">세계</a><a href="#district">지구</a><a href="#factions">세력</a><a href="#cast">인물</a></nav>
+
+<header id="hero">
+  <div class="sk" aria-hidden="true"></div>
+  <div class="tower" aria-hidden="true"><div class="shaft"></div><div class="eye"><b id="pupil"></b></div></div>
+  <svg class="waves" viewBox="0 0 2880 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60Q180 10 360 60T720 60T1080 60T1440 60T1800 60T2160 60T2520 60T2880 60V120H0Z"/><path d="M0 80Q180 40 360 80T720 80T1080 80T1440 80T1800 80T2160 80T2520 80T2880 80V120H0Z"/></svg>
+  <div class="hero-in">
+    <p class="k">DYSPIA × THE DAWN WAVE</p>
+    <h1>왜곡된 낙원,<br><em>가온</em></h1>
+    <p class="s">‘완벽한 질서’를 부르짖는 조직 디스피아가 장악한 도시. 와해된 히어로와 시민들은 저항 조직 새벽의 파도를 결성해 가온시의 해방을 위해 싸우고 있다.</p>
+    <div class="chips"><span>이능력</span><span>히어로</span><span>디스토피아</span><span>저항</span><span>첩보·잠입</span></div>
+    <a class="btn f" href="#world">세계 들여다보기</a><a class="btn" href="#cast">인물 만나기</a>
+  </div>
+</header>
+
+<section id="world">
+  <p class="k">WORLD</p><h2>세계</h2>
+  <div class="two">
+    <div class="box"><h3>이능력</h3>특정한 인물들만이 이능력을 쓸 수 있었고, 능력이 없었던 이들이 과학기술을 발전시키며 오늘날에 이르렀다.</div>
+    <div class="box"><h3>왜곡된 낙원, 가온시</h3>과거 ‘히어로 연합’이 지키던 국가 ‘아라’의 해운·항공 중심 첨단 도시. 지금은 디스피아의 통치 아래 있다.</div>
+  </div>
+  <div class="steps">
+    <div class="step" style="--c:#9aa6b8"><small>01 · 과거</small><p>히어로 연합이 지키던 국가 ‘아라’의 해운·항공 중심 첨단 도시, 가온.</p></div>
+    <div class="step" style="--c:#c98a5e"><small>02 · 혼란</small><p>끊임없는 빌런의 등장과 내부 부패로 도시는 혼란에 빠졌다.</p></div>
+    <div class="step" style="--c:#ff4d57"><small>03 · 장악</small><p>‘완벽한 질서’를 부르짖는 조직 디스피아가 가온시를 장악했다.</p></div>
+    <div class="step" style="--c:#ffb36b"><small>04 · 저항</small><p>와해된 히어로와 시민들이 새벽의 파도를 결성해 해방을 위해 싸운다.</p></div>
+  </div>
+</section>
+
+<section id="district">
+  <p class="k">DISTRICTS</p><h2>가온시의 다섯 지구</h2>
+  <div class="dist"><div class="dl" id="dl" role="group" aria-label="지구 선택"></div><div class="pn" id="pn" aria-live="polite"></div></div>
+</section>
+
+<section id="factions">
+  <p class="k">FACTIONS</p><h2>주요 세력</h2>
+  <div class="seg" id="fseg"></div><div class="fp" id="fp" aria-live="polite"></div>
+</section>
+
+<section id="cast">
+  <p class="k">CAST</p><h2>등장인물</h2><p class="lead">카드를 눌러 자세한 프로필을 확인해 보세요.</p>
+  <div class="seg" id="cseg"></div><div class="grid" id="cgrid"></div>
+</section>
+
+<footer>왜곡된 낙원, 가온<br>이미지는 추후 교체될 Placeholder입니다.</footer>
+<dialog id="dlg"><button class="x" id="dx" aria-label="닫기">×</button><div class="dg" id="dbody"></div></dialog>
+
+<script>
+const $=s=>document.querySelector(s),el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!==undefined)e.innerHTML=h;return e};
+
+/* ===== 이미지 연결 =====
+   "이름":"파일 경로" 형태입니다. 파일이 없으면 Placeholder가 그대로 보입니다.
+   경로는 images/파일명.webp 처럼 소문자로, 이름은 화면에 보이는 이름과 똑같이 적어 주세요.
+   권장 비율: 인물 3:4 (예: 600×800), 지구 16:8 (예: 1280×720) */
+const IMG={
+ "한지운":"images/hanjiun.webp",
+ "정하온":"images/haon.webp",
+ "고세림":"images/serim.webp",
+ "닥터 카론":"images/caron.webp",
+ "벡터":"images/vector.webp",
+ "고인성":"images/inseong.webp",
+ "늘봄 지구":"images/neulbom.webp",
+ "미리내 지구":"images/mirinae.webp",
+ "미르 국제항":"images/port.webp",
+ "다솜 주거지구":"images/dasom.webp",
+ "잿빛 공단":"images/jaetbit.webp",
+};
+const pic=k=>IMG[k]?`<img src="${IMG[k]}" alt="${k}" loading="lazy" decoding="async" onerror="this.remove()">`:"";
+const ph=(c,t,k,x="")=>`<div class="ph${x}" style="--c:${c}">${t||"이미지 영역"}${pic(k)}</div>`;
+function seg(box,names,fn,start=0){box.innerHTML="";names.forEach((n,i)=>{const b=el("button","",n);b.type="button";b.onclick=()=>{[...box.children].forEach(k=>k.setAttribute("aria-pressed",k===b));fn(i)};box.append(b)});box.children[start].click()}
+
+/* 히어로: 질서의 눈이 포인터를 따라 움직이고, 가만히 있으면 도시를 훑어요 */
+(()=>{const eye=$(".eye"),pu=$("#pupil");let last=0;
+ const look=(x,y)=>{const b=eye.getBoundingClientRect(),dx=x-(b.left+b.width/2),dy=y-(b.top+b.height/2),d=Math.hypot(dx,dy)||1,m=Math.min(11,d/18);pu.style.transform=`translate(${dx/d*m}px,${dy/d*m}px)`};
+ addEventListener("pointermove",e=>{last=Date.now();look(e.clientX,e.clientY)},{passive:true});
+ if(!matchMedia("(prefers-reduced-motion:reduce)").matches)setInterval(()=>{if(Date.now()-last>2500){const a=Date.now()/900;pu.style.transform=`translate(${Math.sin(a)*10}px,${Math.cos(a/2)*4}px)`}},60)})();
+
+/* 지구 */
+const D=[
+{n:"늘봄 지구",e:"Neulbom District",c:"#5a6b88",s:"‘늘 봄처럼 변치 않는’이라는 뜻의 이름으로, 점령 전에도 같은 명칭을 썼다. 디스피아가 가장 직접적으로 통제하는 도시의 행정·통제 중심부이자, 과거 가온의 시청과 중앙 광장이 있던 곳. 지금은 디스피아의 거대한 첨탑 ‘질서의 눈(Eye of Order)’이 도시를 내려다보고 있다.",
+ i:"<p><b>질서의 눈</b> 디스피아의 총본부이자 닥터 카론의 거처. 도시의 모든 정보를 수집하고 통제하는 메인 서버가 있다.</p><p><b>특수 통제부</b> ‘질서의 눈’ 최하층의 비밀 시설. 포획한 히어로나 불순분자를 세뇌하고 실험하는 곳.</p><p><b>광장</b> 과거 시민들의 휴식처. 거대한 홀로그램 선전 영상만 24시간 재생되는 을씨년스러운 공간으로 변했다.</p>",
+ a:"고위 간부 암살, 세뇌 시설 잠입 및 파괴, 감시 시스템 해킹 등 최고 난이도의 잠입·파괴 미션이 이루어진다. 최종 목표가 될 가능성이 높은 지역(메인 서버 파괴, 닥터 카론과의 결전 등)."},
+{n:"미리내 지구",e:"Mirinae District",c:"#4b5fa8",s:"‘미리내(은하수)’라는 이름처럼 최첨단 고층 빌딩과 기업 본사들이 밀집한 가온의 금융·경제 허브. 화려한 외관을 유지하고 있지만 모든 기업은 디스피아의 통제 아래 있다.",
+ i:"<p>대기업들은 디스피아에 자금과 기술(특히 감시 기술)을 제공하며 생존하고 있다.</p><p><b>감사부</b>가 이 지구에 위치하며 기업과 부유층의 자금 흐름, 사상 등을 철저히 감시한다.</p><p>부유층에게는 제한된 쾌락이 허용되지만, 그들의 모든 행동은 기록되고 분석된다.</p>",
+ a:"고세림의 주요 활동 무대로, 그녀가 교류하는 고위 인사 대부분이 이곳에 거주한다. 기업에 잠입해 디스피아와의 거래 장부를 빼내거나 내부 고발자를 구출하는 첩보 미션에 최적화된 장소."},
+{n:"미르 국제항",e:"Haemir International Port",c:"#2f7a8c",s:"국제공항과 거대 항만이 결합된 가온의 관문. 한때는 세계로 뻗어 나가는 통로였지만 지금은 외부와의 연결이 거의 차단되었다. 컨테이너 더미, 폐쇄된 터미널, 버려진 활주로 등 은신과 전투에 활용할 지형이 많다.",
+ i:"<p>모든 항공편과 선박은 디스피아의 허가 없이는 드나들 수 없다. 탈출을 시도하는 시민들은 즉결 처분된다.</p><p>디스피아의 군수물자와 통제에 필요한 물품들이 이곳을 통해 들어온다.</p>",
+ a:"새벽의 파도의 핵심 활동 무대. 외부 지원 세력과의 비밀 접선, 필요한 물자 밀수, 중요 인물 탈출 작전 등이 이루어진다."},
+{n:"다솜 주거지구",e:"Dasom Residential District",c:"#7a6a5a",s:"모든 감정이 억압된 채 살아가는 시민들의 주거 지역. 아파트 단지, 학교, 상점 등이 있으며 서로를 감시하는 분위기가 팽배하다.",
+ i:"<p>이념 교육부가 ‘커뮤니티 센터’로 위장한 세뇌 교육 시설에서 아이들과 시민들에게 디스피아의 이념을 주입한다.</p><p>이웃을 고발하면 보상을 주는 시스템으로, 시민들 스스로가 감시자가 되게 만든다.</p>",
+ a:"당신이 디스피아 통치의 참상을 가장 가까이서 느낄 수 있는 곳. 억압받는 시민을 돕거나, 숨어 있는 저항 세력(점조직)을 규합하고, 디스피아의 선전물을 파괴하는 등의 미션이 발생한다."},
+{n:"잿빛 공단",e:"Jaetbit Industrial Complex",c:"#555b66",s:"과거 가온의 성장을 이끌었지만 지금은 쇠락한 구(舊) 공업 지대. 복잡한 골목, 버려진 공장, 지하 터널 등이 미로처럼 얽혀 있다.",
+ i:"<p>디스피아는 통제 가치가 낮다고 판단해 최소한의 감시 병력만 순찰할 뿐, 사실상 방치된 지역이다.</p>",
+ a:"새벽의 파도 총본부가 숨겨져 있는 장소. 정하온을 비롯한 핵심 멤버들이 이곳에 상주한다. 디스피아의 눈을 피해 자유롭게 활동할 수 있는 유일한 해방구."}];
+seg($("#dl"),D.map((d,i)=>`0${i+1} · ${d.n}`),i=>{const d=D[i];
+ $("#pn").innerHTML=ph(d.c,"[ 지구 이미지 · 16:8 ]",d.n)+`<div class="pb"><small>${d.e}</small><h3>${d.n}</h3><p>${d.s}</p><h4 class="r">디스피아의 영향</h4>${d.i}<h4 class="t">이곳에서</h4><p>${d.a}</p></div>`});
+
+/* 세력 */
+const F=[
+{n:"디스피아",e:"DYSPIA",ac:"#ff4d57",lead:"모든 개인의 자유와 감정을 통제하여 ‘고통 없는 낙원’을 만들려는 조직. 이들은 인간의 자유의지가 모든 불행의 근원이라 믿으며, 세뇌와 감시를 통해 가온시를 통치한다.",ld:"닥터 카론 — 코드명만 알려진 디스피아의 설계자이자 절대적 리더",lt:"주요 부서 및 통치 방식",
+ l:[["특수 통제부","히어로 등 특수 능력자를 포획·세뇌·통제하는 핵심 부서"],["감시와 통제","미디어를 장악하고 도시 전역을 감시하며 반대 세력 숙청"],["감정 억압","약물, 교육 등을 통해 강한 감정 표현을 금지하고, 디스피아가 정의하는 ‘질서 속 행복’만을 강요"]]},
+{n:"새벽의 파도",e:"THE DAWN WAVE",ac:"#ffb36b",lead:"디스피아에 저항하기 위해 결성된 히어로 및 시민 연합. 어두워진 가온시에 새로운 새벽을 가져오는 것을 목표로 게릴라 작전, 정보전, 시민 규합 등의 활동을 펼친다.",ld:"정하온 — S급 히어로",lt:"주요 목표",
+ l:[["디스피아 축출","가온시에서 디스피아를 몰아내고 ‘닥터 카론’을 무력화"],["도시 재건","시민들의 자유를 되찾고, 세뇌 피해자들을 치유하여 도시를 재건"]]}];
+seg($("#fseg"),F.map(f=>f.n),i=>{const f=F[i],p=$("#fp");p.style.setProperty("--ac",f.ac);$("#fseg").style.setProperty("--ac",f.ac);
+ p.innerHTML=`<small>${f.e}</small><h3>${f.n}</h3><p>${f.lead}</p><p class="ld"><b>수장</b> ${f.ld}</p><h4>${f.lt}</h4><ul>${f.l.map(([a,b])=>`<li><b>${a}</b>${b}</li>`).join("")}</ul>`});
+
+/* 인물 */
+const CH={
+"주요 인물":[
+{n:"한지운",r:"디스피아 특수통제부 ↔ 새벽의 파도",c:"#4f8fd6",
+ f:[["나이","23세"],["체격","178.4cm · 탄탄한 체형, 단단한 느낌"],["이능력","마인드컨트롤 / 얼음 (이중능력)"],["소속","디스피아 특수 통제부 ↔ 새벽의 파도 (당신의 선택에 따라 변동)"],["상태","디스피아 산하 감사요원 · 특수통제부 소속"]],
+ b:"<b>세뇌 전후사정</b> 가온시가 디스피아의 손에 넘어가자 소중히 여기던 사람들을 지키려 디스피아에 맞서다, 친구였던 정하온이 디스피아에 납치되는 것을 막고 대신 붙잡혔다. 디스피아는 그에게 강한 고문과 동시에 강력한 세뇌를 걸었다.",
+ s:{"세뇌 중":{f:[["외형","차가운 눈빛, 창백한 피부톤, 어둡고 안광 없는 파란색 눈동자"],["분위기","날카로운 긴장감이 자욱하고 위태롭다"],["말투","딱딱하고 차가운 말투"],["참고","세뇌 중에도 행동범위 제한은 없다"]],
+  b:"디스피아의 명령에 절대복종하는 ‘개’. 감정 없이 과거 동료들을 사냥하는 냉혹한 모습을 보인다. 하지만 무의식 깊은 곳에서는 혼란과 고통을 겪고 있다. 그나마 당신과 정하온에게 본래의 다정함 일부를 드러낸다. 연애감정을 품은 상대를 새장 속에 가두고 모든 걸 자신이 하려는 기질이 강하다."},
+  "세뇌 해제":{f:[["외형","부드럽고 다정한 눈빛, 하얀 피부톤, 희미한 빛이 도는 파란색 눈동자"],["분위기","부드럽고 다정하고 온화함"],["말투","부드럽고 친근한 어조"]],
+  b:"천성부터 부드럽고 다정한 사람. 동료들을 지옥으로 몰아넣은 죄책감이 심하다. 망가진 여파로 연애감정을 품은 상대에게 집착이 있으나 헌신으로만 드러낸다. 그가 저지른 일을 조금이라도 속죄할 수 있는 유일한 방법이기에 디스피아 축출에 매달린다. 해방 후에는 마음의 짐을 꽤 내려놓는다."}}},
+{n:"정하온",r:"새벽의 파도 수장 · S급 히어로",c:"#f0a54a",
+ f:[["나이","25세"],["체격","182.4cm · 부드러운 느낌"],["외모","둥글둥글한 이목구비, 생기 가득한 피부, 웃음 가득한 노란 눈동자"],["이능력","화염"],["소속","(과거) 가온시 히어로 연합 → (현) 새벽의 파도"],["특이사항","세계적으로 손꼽히는 강력한 히어로. 무력에 더해 세세한 능력 컨트롤까지 완벽하게 해내는 실력으로 유명하다."]],
+ b:"능글맞고 쾌활하지만, 동료와 시민을 지키려는 정의감과 책임감이 매우 강하다. 자신 때문에 한지운이 붙잡혔다는 죄책감이 그의 가장 큰 상처다. 장난기 속에 숨겨진 진지함이 매력. 장난스럽게 티격태격하는 맛도 있는 친화력 좋은 사람으로, 함께하는 시간을 소중히 여기는 든든한 타입."},
+{n:"고세림",r:"S급 히어로 출신 · 이중 스파이",c:"#8a6fd1",
+ f:[["나이","28세"],["체격","168.7cm · 여리여리한 체형, 날카로운 느낌"],["외모","고고하고 우아한 느낌, 위태롭고 불안정한 보라색 눈동자"],["이능력","바람"],["소속","(과거) S시 히어로 연합 / (현) 디스피아 — 위장, 새벽의 파도 — 실제"]],
+ b:"자기 사람은 잘 챙기는 고고한 아가씨. 지고 못 사는 성격과 복수심에 스파이로 활동하고 있다. 한때 착한 후배였던 한지운을 아꼈으나, 변해버린 그에게 불안정한 감정을 느끼고 있다(로맨스 감정은 아님). 전형적인 미워할 수 없는 츤데레 아가씨. 고고하고 오만한 겉모습 뒤에 숨겨진 불안정함과 외로움을 당신이 이해해 줄 때 마음을 연다. 처음에는 도발적이거나 냉정하게 행동할 수 있지만, 신뢰를 쌓으면 점차 부드러운 모습을 보인다. 주체적이고 독립적인 성향."}],
+"디스피아":[
+{n:"닥터 카론",r:"디스피아 수장 · 설계자",c:"#b0303a",
+ f:[["정체","코드명만 알려진 디스피아의 설계자이자 절대적 리더"],["배경","과거 가온시의 혼란 속에서 소중한 이를 잃고, 인간의 ‘자유의지’ 자체를 증오하게 된 전직 심리학자"],["능력","강력한 정신 조작 및 집단 세뇌, 인간의 심리를 꿰뚫는 천재적인 분석력"]],
+ b:"목적을 위해 어떤 희생도 정당화하는 냉혈한이자, 자신의 신념에 한 치의 의심도 없는 광신도."},
+{n:"벡터",r:"디스피아 특수기동부 현장 지휘관",c:"#8a2a3a",
+ f:[["코드네임","벡터 (Vector)"],["이능력","주변 모든 사물과 에너지의 ‘벡터(힘과 방향)’를 제어한다. 총탄을 반사하고, 파편을 고속으로 투사하며, 상대의 움직임을 봉쇄하는 등 물리 법칙을 무시하는 전투를 펼친다."],["역할","새벽의 파도의 작전 현장에 나타나 위협하는 강력한 중간 보스"]],
+ b:"감정을 ‘버그’로, 자유의지를 ‘혼돈’으로 여기며 닥터 카론의 ‘완벽한 질서’를 숭배하는 광신도. 저항군을 ‘수정되어야 할 오류’로 여기며 경멸한다."}],
+"그 외":[
+{n:"고인성",r:"고세림의 아버지 · 전 가온시 국회의원",c:"#5a6b88",
+ f:[["현재","디스피아의 철통 감시를 받으며 자택에 감금되어 있다"]],
+ b:"디스피아는 그에게서 국가의 여러 중요 기밀 정보들을 캐내고, 종종 세뇌를 시도하고 있다. 딸에 대한 사랑이 매우 극진하다. 그 사랑 때문에 세뇌당하지 않고 견디는 중."}]};
+const dlg=$("#dlg");
+function openC(c){const ks=c.s?Object.keys(c.s):[];
+ $("#dbody").innerHTML=`${ph(c.c,"[ 캐릭터 · 3:4 ]",c.n," tall")}<div><h3>${c.n}</h3><p class="rl">${c.r}</p>${ks.length?'<div class="seg" id="st"></div>':""}<div id="dc"></div></div>`;
+ const show=k=>{const s=k?c.s[k]:{f:[],b:""};$("#dc").innerHTML=`<dl class="fa">${[...c.f,...s.f].map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join("")}</dl>${s.b?`<p class="hi">${s.b}</p>`:""}<p style="margin-top:.8rem">${c.b}</p>`};
+ if(ks.length)seg($("#st"),ks,i=>show(ks[i]));else show();
+ dlg.showModal()}
+seg($("#cseg"),Object.keys(CH),i=>{const g=$("#cgrid");g.innerHTML="";CH[Object.keys(CH)[i]].forEach(c=>{const b=el("button","card",ph(c.c,"[ 캐릭터 · 3:4 ]",c.n," tall")+`<h3>${c.n}</h3><span>${c.r}</span>`);b.type="button";b.onclick=()=>openC(c);g.append(b)})});
+$("#dx").onclick=()=>dlg.close();dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close()});
+</script>
+</body>
+</html>
