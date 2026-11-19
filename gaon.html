@@ -94,6 +94,11 @@ dialog::backdrop{background:rgba(3,5,10,.82);backdrop-filter:blur(4px)}
 .fa{display:grid;grid-template-columns:5.2rem 1fr;gap:.35rem .9rem;margin:.6rem 0 1rem;font-size:.92rem}
 .fa dt{color:var(--dim)}
 .hi{border-left:3px solid var(--ac);padding-left:.8rem;margin-top:.8rem}
+.th{display:flex;flex-wrap:wrap;gap:6px;margin-top:.7rem}
+.th button{width:50px;aspect-ratio:3/4;padding:0;border:2px solid transparent;background:#000;overflow:hidden;cursor:pointer;opacity:.55;color:var(--dim)}
+.th button[aria-pressed=true]{border-color:var(--ac);opacity:1}
+.th img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
+.cap{font-size:.8rem;color:var(--dim);margin-top:.5rem}
 .x{position:absolute;top:8px;right:14px;background:none;border:0;color:var(--dim);font-size:1.8rem;cursor:pointer;line-height:1}
 footer{text-align:center;padding:3rem 1rem;color:var(--dim);border-top:1px solid var(--line);font-size:.9rem}
 
@@ -175,8 +180,10 @@ const IMG={
  "다솜 주거지구":"images/dasom.webp",
  "잿빛 공단":"images/jaetbit.webp",
 };
-const pic=k=>IMG[k]?`<img src="${IMG[k]}" alt="${k}" loading="lazy" decoding="async" onerror="this.remove()">`:"";
-const ph=(c,t,k,x="")=>`<div class="ph${x}" style="--c:${c}">${t||"이미지 영역"}${pic(k)}</div>`;
+const pic=(s,a)=>s?`<img src="${s}" alt="${a}" loading="lazy" decoding="async" onerror="this.remove()">`:"";
+const phs=(c,t,s,x="",a="")=>`<div class="ph${x}" style="--c:${c}">${t}${pic(s,a||t)}</div>`;
+const ph=(c,t,k,x="")=>phs(c,t||"이미지 영역",IMG[k],x,k);
+const I=n=>`images/${n}.webp`;
 function seg(box,names,fn,start=0){box.innerHTML="";names.forEach((n,i)=>{const b=el("button","",n);b.type="button";b.onclick=()=>{[...box.children].forEach(k=>k.setAttribute("aria-pressed",k===b));fn(i)};box.append(b)});box.children[start].click()}
 
 /* 히어로: 질서의 눈이 포인터를 따라 움직이고, 가만히 있으면 도시를 훑어요 */
@@ -193,7 +200,7 @@ const D=[
 {n:"미리내 지구",e:"Mirinae District",c:"#4b5fa8",s:"‘미리내(은하수)’라는 이름처럼 최첨단 고층 빌딩과 기업 본사들이 밀집한 가온의 금융·경제 허브. 화려한 외관을 유지하고 있지만 모든 기업은 디스피아의 통제 아래 있다.",
  i:"<p>대기업들은 디스피아에 자금과 기술(특히 감시 기술)을 제공하며 생존하고 있다.</p><p><b>감사부</b>가 이 지구에 위치하며 기업과 부유층의 자금 흐름, 사상 등을 철저히 감시한다.</p><p>부유층에게는 제한된 쾌락이 허용되지만, 그들의 모든 행동은 기록되고 분석된다.</p>",
  a:"고세림의 주요 활동 무대로, 그녀가 교류하는 고위 인사 대부분이 이곳에 거주한다. 기업에 잠입해 디스피아와의 거래 장부를 빼내거나 내부 고발자를 구출하는 첩보 미션에 최적화된 장소."},
-{n:"미르 국제항",e:"Haemir International Port",c:"#2f7a8c",s:"국제공항과 거대 항만이 결합된 가온의 관문. 한때는 세계로 뻗어 나가는 통로였지만 지금은 외부와의 연결이 거의 차단되었다. 컨테이너 더미, 폐쇄된 터미널, 버려진 활주로 등 은신과 전투에 활용할 지형이 많다.",
+{n:"미르 국제항",e:"Mir International Port",c:"#2f7a8c",s:"국제공항과 거대 항만이 결합된 가온의 관문. 한때는 세계로 뻗어 나가는 통로였지만 지금은 외부와의 연결이 거의 차단되었다. 컨테이너 더미, 폐쇄된 터미널, 버려진 활주로 등 은신과 전투에 활용할 지형이 많다.",
  i:"<p>모든 항공편과 선박은 디스피아의 허가 없이는 드나들 수 없다. 탈출을 시도하는 시민들은 즉결 처분된다.</p><p>디스피아의 군수물자와 통제에 필요한 물품들이 이곳을 통해 들어온다.</p>",
  a:"새벽의 파도의 핵심 활동 무대. 외부 지원 세력과의 비밀 접선, 필요한 물자 밀수, 중요 인물 탈출 작전 등이 이루어진다."},
 {n:"다솜 주거지구",e:"Dasom Residential District",c:"#7a6a5a",s:"모든 감정이 억압된 채 살아가는 시민들의 주거 지역. 아파트 단지, 학교, 상점 등이 있으며 서로를 감시하는 분위기가 팽배하다.",
@@ -220,21 +227,21 @@ const CH={
 {n:"한지운",r:"디스피아 특수통제부 ↔ 새벽의 파도",c:"#4f8fd6",
  f:[["나이","23세"],["체격","178.4cm · 탄탄한 체형, 단단한 느낌"],["이능력","마인드컨트롤 / 얼음 (이중능력)"],["소속","디스피아 특수 통제부 ↔ 새벽의 파도 (당신의 선택에 따라 변동)"],["상태","디스피아 산하 감사요원 · 특수통제부 소속"]],
  b:"<b>세뇌 전후사정</b> 가온시가 디스피아의 손에 넘어가자 소중히 여기던 사람들을 지키려 디스피아에 맞서다, 친구였던 정하온이 디스피아에 납치되는 것을 막고 대신 붙잡혔다. 디스피아는 그에게 강한 고문과 동시에 강력한 세뇌를 걸었다.",
- s:{"세뇌 중":{f:[["외형","차가운 눈빛, 창백한 피부톤, 어둡고 안광 없는 파란색 눈동자"],["분위기","날카로운 긴장감이 자욱하고 위태롭다"],["말투","딱딱하고 차가운 말투"],["참고","세뇌 중에도 행동범위 제한은 없다"]],
+ s:{"세뇌 중":{g:[["등장",I("hanjiun")],["심문",I("hanjiun-ctl-interrogate")],["전투 1",I("hanjiun-ctl-battle1")],["전투 2",I("hanjiun-ctl-battle2")]],f:[["외형","차가운 눈빛, 창백한 피부톤, 어둡고 안광 없는 파란색 눈동자"],["분위기","날카로운 긴장감이 자욱하고 위태롭다"],["말투","딱딱하고 차가운 말투"],["참고","세뇌 중에도 행동범위 제한은 없다"]],
   b:"디스피아의 명령에 절대복종하는 ‘개’. 감정 없이 과거 동료들을 사냥하는 냉혹한 모습을 보인다. 하지만 무의식 깊은 곳에서는 혼란과 고통을 겪고 있다. 그나마 당신과 정하온에게 본래의 다정함 일부를 드러낸다. 연애감정을 품은 상대를 새장 속에 가두고 모든 걸 자신이 하려는 기질이 강하다."},
-  "세뇌 해제":{f:[["외형","부드럽고 다정한 눈빛, 하얀 피부톤, 희미한 빛이 도는 파란색 눈동자"],["분위기","부드럽고 다정하고 온화함"],["말투","부드럽고 친근한 어조"]],
+  "세뇌 해제":{g:[["기분 좋음",I("hanjiun-free")],["전투 1",I("hanjiun-free-battle1")],["전투 2",I("hanjiun-free-battle2")]],f:[["외형","부드럽고 다정한 눈빛, 하얀 피부톤, 희미한 빛이 도는 파란색 눈동자"],["분위기","부드럽고 다정하고 온화함"],["말투","부드럽고 친근한 어조"]],
   b:"천성부터 부드럽고 다정한 사람. 동료들을 지옥으로 몰아넣은 죄책감이 심하다. 망가진 여파로 연애감정을 품은 상대에게 집착이 있으나 헌신으로만 드러낸다. 그가 저지른 일을 조금이라도 속죄할 수 있는 유일한 방법이기에 디스피아 축출에 매달린다. 해방 후에는 마음의 짐을 꽤 내려놓는다."}}},
-{n:"정하온",r:"새벽의 파도 수장 · S급 히어로",c:"#f0a54a",
+{n:"정하온",r:"새벽의 파도 수장 · S급 히어로",c:"#f0a54a",g:[["평소",I("haon")],["등장",I("haon-appear")],["기분 좋음",I("haon-happy")],["기분 좋음 2",I("haon-happy2")],["전투 준비",I("haon-ready")],["전투",I("haon-battle")],["전투 잘 풀림",I("haon-win")],["전투 안 풀림",I("haon-lose")]],
  f:[["나이","25세"],["체격","182.4cm · 부드러운 느낌"],["외모","둥글둥글한 이목구비, 생기 가득한 피부, 웃음 가득한 노란 눈동자"],["이능력","화염"],["소속","(과거) 가온시 히어로 연합 → (현) 새벽의 파도"],["특이사항","세계적으로 손꼽히는 강력한 히어로. 무력에 더해 세세한 능력 컨트롤까지 완벽하게 해내는 실력으로 유명하다."]],
  b:"능글맞고 쾌활하지만, 동료와 시민을 지키려는 정의감과 책임감이 매우 강하다. 자신 때문에 한지운이 붙잡혔다는 죄책감이 그의 가장 큰 상처다. 장난기 속에 숨겨진 진지함이 매력. 장난스럽게 티격태격하는 맛도 있는 친화력 좋은 사람으로, 함께하는 시간을 소중히 여기는 든든한 타입."},
-{n:"고세림",r:"S급 히어로 출신 · 이중 스파이",c:"#8a6fd1",
+{n:"고세림",r:"S급 히어로 출신 · 이중 스파이",c:"#8a6fd1",g:[["새침",I("serim")],["기분 좋음",I("serim-happy")],["전투 개시",I("serim-battle-start")],["전투 잘 풀림",I("serim-win")],["전투 안 풀림",I("serim-lose")]],
  f:[["나이","28세"],["체격","168.7cm · 여리여리한 체형, 날카로운 느낌"],["외모","고고하고 우아한 느낌, 위태롭고 불안정한 보라색 눈동자"],["이능력","바람"],["소속","(과거) S시 히어로 연합 / (현) 디스피아 — 위장, 새벽의 파도 — 실제"]],
  b:"자기 사람은 잘 챙기는 고고한 아가씨. 지고 못 사는 성격과 복수심에 스파이로 활동하고 있다. 한때 착한 후배였던 한지운을 아꼈으나, 변해버린 그에게 불안정한 감정을 느끼고 있다(로맨스 감정은 아님). 전형적인 미워할 수 없는 츤데레 아가씨. 고고하고 오만한 겉모습 뒤에 숨겨진 불안정함과 외로움을 당신이 이해해 줄 때 마음을 연다. 처음에는 도발적이거나 냉정하게 행동할 수 있지만, 신뢰를 쌓으면 점차 부드러운 모습을 보인다. 주체적이고 독립적인 성향."}],
 "디스피아":[
-{n:"닥터 카론",r:"디스피아 수장 · 설계자",c:"#b0303a",
+{n:"닥터 카론",r:"디스피아 수장 · 설계자",c:"#b0303a",g:[["등장",I("caron")],["음모 꾸미는 중",I("caron-plot")],["일이 안 풀림",I("caron-fail")],["일이 잘 안 풀림",I("caron-fail2")]],
  f:[["정체","코드명만 알려진 디스피아의 설계자이자 절대적 리더"],["배경","과거 가온시의 혼란 속에서 소중한 이를 잃고, 인간의 ‘자유의지’ 자체를 증오하게 된 전직 심리학자"],["능력","강력한 정신 조작 및 집단 세뇌, 인간의 심리를 꿰뚫는 천재적인 분석력"]],
  b:"목적을 위해 어떤 희생도 정당화하는 냉혈한이자, 자신의 신념에 한 치의 의심도 없는 광신도."},
-{n:"벡터",r:"디스피아 특수기동부 현장 지휘관",c:"#8a2a3a",
+{n:"벡터",r:"디스피아 특수기동부 현장 지휘관",c:"#8a2a3a",g:[["등장",I("vector")],["등장 2",I("vector-appear2")],["경계",I("vector-alert")],["전투 개시",I("vector-battle-start")],["전투",I("vector-battle")]],
  f:[["코드네임","벡터 (Vector)"],["이능력","주변 모든 사물과 에너지의 ‘벡터(힘과 방향)’를 제어한다. 총탄을 반사하고, 파편을 고속으로 투사하며, 상대의 움직임을 봉쇄하는 등 물리 법칙을 무시하는 전투를 펼친다."],["역할","새벽의 파도의 작전 현장에 나타나 위협하는 강력한 중간 보스"]],
  b:"감정을 ‘버그’로, 자유의지를 ‘혼돈’으로 여기며 닥터 카론의 ‘완벽한 질서’를 숭배하는 광신도. 저항군을 ‘수정되어야 할 오류’로 여기며 경멸한다."}],
 "그 외":[
@@ -242,10 +249,17 @@ const CH={
  f:[["현재","디스피아의 철통 감시를 받으며 자택에 감금되어 있다"]],
  b:"디스피아는 그에게서 국가의 여러 중요 기밀 정보들을 캐내고, 종종 세뇌를 시도하고 있다. 딸에 대한 사랑이 매우 극진하다. 그 사랑 때문에 세뇌당하지 않고 견디는 중."}]};
 const dlg=$("#dlg");
-function openC(c){const ks=c.s?Object.keys(c.s):[];
- $("#dbody").innerHTML=`${ph(c.c,"[ 캐릭터 · 3:4 ]",c.n," tall")}<div><h3>${c.n}</h3><p class="rl">${c.r}</p>${ks.length?'<div class="seg" id="st"></div>':""}<div id="dc"></div></div>`;
+function openC(c){const ks=c.s?Object.keys(c.s):[];let gl=[],gi=0;
+ $("#dbody").innerHTML=`<div><div id="gm"></div><div class="th" id="th"></div></div><div><h3>${c.n}</h3><p class="rl">${c.r}</p>${ks.length?'<div class="seg" id="st"></div>':""}<div id="dc"></div></div>`;
+ const showG=i=>{gi=i;const g=gl[i];
+  $("#gm").innerHTML=phs(c.c,`[ ${g?g[0]:"캐릭터"} · 3:4 ]`,g&&g[1]," tall",g?`${c.n} ${g[0]}`:c.n)+(gl.length>1?`<p class="cap">${g[0]} · ${i+1} / ${gl.length}</p>`:"");
+  [...$("#th").children].forEach((b,j)=>b.setAttribute("aria-pressed",j===i))};
+ const setG=l=>{gl=l;const th=$("#th");th.innerHTML="";
+  if(l.length>1)l.forEach((g,i)=>{const b=el("button","",pic(g[1],g[0])||i+1);b.type="button";b.setAttribute("aria-label",g[0]);b.onclick=()=>showG(i);th.append(b)});
+  $("#gm").style.cursor=l.length>1?"pointer":"default";showG(0)};
+ $("#gm").onclick=()=>{if(gl.length>1)showG((gi+1)%gl.length)};
  const show=k=>{const s=k?c.s[k]:{f:[],b:""};$("#dc").innerHTML=`<dl class="fa">${[...c.f,...s.f].map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join("")}</dl>${s.b?`<p class="hi">${s.b}</p>`:""}<p style="margin-top:.8rem">${c.b}</p>`};
- if(ks.length)seg($("#st"),ks,i=>show(ks[i]));else show();
+ if(ks.length)seg($("#st"),ks,i=>{show(ks[i]);setG(c.s[ks[i]].g||[])});else{show();setG(c.g||[])}
  dlg.showModal()}
 seg($("#cseg"),Object.keys(CH),i=>{const g=$("#cgrid");g.innerHTML="";CH[Object.keys(CH)[i]].forEach(c=>{const b=el("button","card",ph(c.c,"[ 캐릭터 · 3:4 ]",c.n," tall")+`<h3>${c.n}</h3><span>${c.r}</span>`);b.type="button";b.onclick=()=>openC(c);g.append(b)})});
 $("#dx").onclick=()=>dlg.close();dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close()});
